@@ -4,427 +4,809 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Yunus Coaching - Result Portal</title>
+<title>Younush Science Corner - Result Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  background:#f3f6fb;
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  color:#18243a;
+    font-family:'Noto Sans Bengali',sans-serif;
+    background:#f2f8ff;
+    color:#123c6b;
 }
 
-.container{
-  max-width:520px;
-  margin:30px auto;
-  padding:15px;
+/* ================= HEADER ================= */
+
+.hero{
+    min-height:390px;
+    padding:25px 5%;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at 20% 20%,#1468c5,transparent 35%),
+    radial-gradient(circle at 80% 30%,#003b88,transparent 40%),
+    linear-gradient(135deg,#001b4d,#0054a6,#001a45);
+
+    color:white;
 }
 
-.card{
-  background:white;
-  border-radius:25px;
-  padding:35px 30px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+.hero:before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border:2px solid rgba(255,255,255,.08);
+    border-radius:50%;
+    left:-250px;
+    top:-300px;
 }
 
-h1{
-  text-align:center;
-  margin:0;
-  font-size:38px;
+.hero-content{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:35px;
+    position:relative;
+    z-index:2;
 }
 
-.subtitle{
-  text-align:center;
-  color:#667085;
-  font-size:22px;
-  margin:8px 0 45px;
+/* PROFILE */
+
+.profile{
+    width:230px;
+    align-self:flex-end;
+    text-align:center;
 }
 
-label{
-  display:block;
-  font-size:25px;
-  font-weight:bold;
-  margin:22px 0 10px;
+.profile img{
+    width:220px;
+    height:350px;
+    object-fit:cover;
+    object-position:top;
+    border-radius:20px 20px 0 0;
+    filter:drop-shadow(0 10px 15px rgba(0,0,0,.4));
 }
 
-input{
-  width:100%;
-  padding:18px;
-  border:1px solid #d0d5dd;
-  border-radius:18px;
-  font-size:22px;
-  outline:none;
+/* TITLE */
+
+.logo{
+    text-align:center;
+    flex:1;
 }
 
-input:focus{
-  border-color:#2563eb;
+.logo h1{
+    font-family:Arial,sans-serif;
+    font-size:65px;
+    font-weight:900;
+    line-height:.95;
+    color:#ff2438;
+    text-shadow:
+        4px 4px 0 white,
+        7px 7px 0 #061b3d;
 }
 
-button{
-  width:100%;
-  margin-top:30px;
-  padding:19px;
-  border:0;
-  border-radius:18px;
-  background:#2563eb;
-  color:white;
-  font-size:25px;
-  font-weight:bold;
+.logo h2{
+    margin-top:5px;
+    font-family:Arial,sans-serif;
+    font-size:72px;
+    font-weight:900;
+    letter-spacing:-4px;
+
+    background:linear-gradient(
+        90deg,
+        #5bdc4c,
+        #ffd72e,
+        #ff4d96,
+        #9c5cff,
+        #35a9ff
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    -webkit-text-stroke:3px white;
+
+    text-shadow:6px 7px 0 #061b3d;
 }
 
-button:active{
-  transform:scale(.98);
+.corner{
+    display:inline-block;
+    background:#f21e32;
+    color:white;
+    padding:5px 25px;
+    font-size:45px;
+    font-family:Arial,sans-serif;
+    font-weight:900;
+    border:5px solid white;
+    border-radius:8px;
+    box-shadow:5px 6px 0 #061b3d;
 }
 
-#error{
-  display:none;
-  text-align:center;
-  color:#d92d20;
-  margin-top:20px;
-  font-size:18px;
-  font-weight:bold;
+.tagline{
+    margin-top:15px;
+    font-size:25px;
+    font-weight:700;
 }
 
-#result{
-  display:none;
-  margin-top:25px;
-  padding:25px;
-  border-radius:18px;
-  background:#f0fdf4;
-  border:1px solid #86efac;
+.subjects{
+    margin:18px auto 0;
+    background:#ed2539;
+    border-radius:25px;
+    padding:8px 20px;
+    font-weight:700;
+    font-size:17px;
+    max-width:650px;
 }
 
-#result h2{
-  text-align:center;
-  margin-top:0;
+/* ADMISSION */
+
+.admission{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    background:linear-gradient(135deg,#ffdf00,#ff2e63,#743cff);
+    border:8px solid white;
+
+    box-shadow:0 0 0 6px #075bb5,
+               0 10px 25px rgba(0,0,0,.4);
+
+    color:white;
+    font-size:25px;
+    font-weight:900;
 }
 
-.result-row{
-  padding:10px 0;
-  border-bottom:1px solid #d1fae5;
-  font-size:19px;
+/* ================= NAVBAR ================= */
+
+nav{
+    background:#002d62;
+    padding:10px;
 }
 
-.result-row:last-child{
-  border-bottom:0;
+.nav-inner{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    justify-content:space-around;
 }
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:13px 25px;
+    border-radius:12px;
+    font-size:17px;
+}
+
+nav a:hover,
+nav a.active{
+    background:#0879ff;
+}
+
+/* ================= MAIN ================= */
+
+main{
+    max-width:1000px;
+    margin:auto;
+    padding:45px 20px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.title h2{
+    font-size:42px;
+    color:#0755a0;
+}
+
+.title p{
+    font-size:18px;
+    margin-top:8px;
+}
+
+/* SEARCH BOX */
+
+.search-box{
+    background:white;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 10px 35px rgba(0,80,160,.12);
+    margin-bottom:25px;
+}
+
+.inputs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.input-group{
+    position:relative;
+}
+
+.input-group input{
+    width:100%;
+    padding:17px 20px;
+    border:2px solid #d9e8f7;
+    border-radius:13px;
+    outline:none;
+    font-size:17px;
+    font-family:inherit;
+}
+
+.input-group input:focus{
+    border-color:#0879ff;
+}
+
+.search-btn{
+    margin-top:20px;
+    width:100%;
+    border:0;
+    padding:17px;
+    border-radius:15px;
+    background:linear-gradient(90deg,#0669f5,#087bff);
+    color:white;
+    font-family:inherit;
+    font-size:20px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.search-btn:hover{
+    opacity:.9;
+}
+
+/* ================= RESULT ================= */
+
+.result{
+    display:none;
+    background:white;
+    border:2px solid #52ddb0;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 35px rgba(0,120,80,.1);
+}
+
+.result-header{
+    background:#e5fff4;
+    border-radius:15px;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.result-header h3{
+    color:#00875a;
+    font-size:28px;
+}
+
+.success{
+    background:#12b779;
+    color:white;
+    padding:7px 15px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+/* RESULT CONTENT */
+
+.result-content{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:30px;
+    align-items:start;
+}
+
+.student{
+    text-align:center;
+}
+
+.student img{
+    width:190px;
+    height:190px;
+    object-fit:cover;
+    object-position:top;
+    border-radius:50%;
+    border:7px solid white;
+    outline:4px solid #13bfa1;
+}
+
+.student-name{
+    margin-top:15px;
+    font-family:cursive;
+    font-size:25px;
+    color:#073b70;
+}
+
+.student p{
+    margin-top:8px;
+    color:#168b66;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:12px;
+}
+
+td{
+    border:1px solid #d8e7f2;
+    padding:10px 15px;
+    font-size:17px;
+}
+
+td:first-child{
+    width:45%;
+    font-weight:600;
+    background:#f2f9ff;
+}
+
+td:last-child{
+    font-weight:700;
+    color:#163e69;
+}
+
+/* CONGRATS */
+
+.congrats{
+    margin-top:18px;
+    background:#e2fff3;
+    border:1px solid #9debd0;
+    border-radius:12px;
+    padding:15px;
+    color:#087b58;
+}
+
+.congrats strong{
+    display:block;
+    font-size:18px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#002b5c;
+    color:white;
+    text-align:center;
+    padding:35px 15px;
+    margin-top:30px;
+}
+
+footer h3{
+    font-size:22px;
+}
+
+.social{
+    margin:15px 0;
+}
+
+.social span{
+    display:inline-block;
+    margin:5px;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    border-radius:50%;
+    background:#0879ff;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:850px){
+
+    .hero{
+        padding:20px 10px 0;
+    }
+
+    .hero-content{
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .profile{
+        order:2;
+        width:180px;
+    }
+
+    .profile img{
+        width:180px;
+        height:270px;
+    }
+
+    .logo{
+        order:1;
+    }
+
+    .admission{
+        display:none;
+    }
+
+    .logo h1{
+        font-size:43px;
+    }
+
+    .logo h2{
+        font-size:48px;
+    }
+
+    .corner{
+        font-size:30px;
+    }
+
+    .tagline{
+        font-size:18px;
+    }
+
+    .subjects{
+        font-size:12px;
+    }
+
+    .nav-inner{
+        overflow-x:auto;
+        justify-content:flex-start;
+        gap:5px;
+    }
+
+    nav a{
+        white-space:nowrap;
+        font-size:14px;
+        padding:10px 14px;
+    }
+
+    .title h2{
+        font-size:30px;
+    }
+
+    .inputs{
+        grid-template-columns:1fr;
+    }
+
+    .result-content{
+        grid-template-columns:1fr;
+    }
+
+    .student{
+        margin:auto;
+    }
+
+    td{
+        font-size:14px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<div class="container">
 
-  <div class="card">
+<!-- ================= HEADER ================= -->
 
-    <h1>Yunus Coaching</h1>
+<header class="hero">
 
-    <div class="subtitle">
-      Result Portal
+<div class="hero-content">
+
+    <div class="profile">
+        <img src="profile.jpg" alt="Student">
     </div>
 
-    <label>শিক্ষার্থীর নাম</label>
 
-    <input
-      type="text"
-      id="name"
-      placeholder="নাম লিখুন"
-    >
+    <div class="logo">
 
-    <label>রেজাল্ট কোড</label>
+        <h1>YOUNUSH</h1>
 
-    <input
-      type="text"
-      id="code"
-      placeholder="কোড লিখুন"
-    >
+        <h2>SCIENCE</h2>
 
-    <button onclick="showResult()">
-      রেজাল্ট দেখুন
-    </button>
+        <div class="corner">
+            CORNER
+        </div>
 
-    <div id="error">
-      নাম অথবা রেজাল্ট কোড সঠিক নয়।
-    </div>
+        <div class="tagline">
+            — জ্ঞানই শক্তি, বিজ্ঞানই ভবিষ্যৎ —
+        </div>
 
-    <div id="result">
-
-      <h2>🎓 রেজাল্ট</h2>
-
-      <div class="result-row">
-        <b>নাম:</b> <span id="rName"></span>
-      </div>
-
-      <div class="result-row">
-        <b>রেজাল্ট কোড:</b> <span id="rCode"></span>
-      </div>
-
-      <div class="result-row">
-        <b>বাংলা:</b> <span id="bangla"></span>
-      </div>
-
-      <div class="result-row">
-        <b>ইংরেজি:</b> <span id="english"></span>
-      </div>
-
-      <div class="result-row">
-        <b>গণিত:</b> <span id="math"></span>
-      </div>
-
-      <div class="result-row">
-        <b>বিজ্ঞান:</b> <span id="science"></span>
-      </div>
-
-      <div class="result-row">
-        <b>মোট নম্বর:</b> <span id="total"></span>
-      </div>
-
-      <div class="result-row">
-        <b>গ্রেড:</b> <span id="grade"></span>
-      </div>
+        <div class="subjects">
+            PHYSICS / CHEMISTRY / BIOLOGY / HIGHER MATH / GENERAL MATH
+        </div>
 
     </div>
 
-  </div>
+
+    <div class="admission">
+        🎓<br>
+        চলতি শিক্ষাবর্ষে<br>
+        ভর্তি চলছে
+    </div>
 
 </div>
 
+</header>
+
+
+<!-- ================= NAV ================= -->
+
+<nav>
+
+<div class="nav-inner">
+
+<a href="#" class="active">🏠 হোম</a>
+
+<a href="#result">📋 রেজাল্ট দেখুন</a>
+
+<a href="#about">ⓘ আমাদের সম্পর্কে</a>
+
+<a href="#contact">✉ যোগাযোগ</a>
+
+</div>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main id="result">
+
+
+<div class="title">
+
+<h2>🎓 Result Portal</h2>
+
+<p>
+আপনার রেজাল্ট দেখতে নিচে নাম্বার ও রেজাল্ট কোড দিন
+</p>
+
+</div>
+
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<div class="inputs">
+
+<div class="input-group">
+
+<input
+type="text"
+id="studentName"
+placeholder="👤 শিক্ষার্থীর নাম লিখুন"
+>
+
+</div>
+
+
+<div class="input-group">
+
+<input
+type="text"
+id="resultCode"
+placeholder="🔒 রেজাল্ট কোড লিখুন"
+>
+
+</div>
+
+</div>
+
+
+<button class="search-btn" onclick="showResult()">
+
+🔍 &nbsp; রেজাল্ট দেখুন
+
+</button>
+
+</div>
+
+
+
+<!-- RESULT CARD -->
+
+<div class="result" id="resultCard">
+
+
+<div class="result-header">
+
+<h3>🎓 রেজাল্ট</h3>
+
+<div class="success">
+✓ রেজাল্ট সফলভাবে পাওয়া গেছে
+</div>
+
+</div>
+
+
+
+<div class="result-content">
+
+
+<!-- STUDENT -->
+
+<div class="student">
+
+<img src="profile.jpg" alt="Student">
+
+<div class="student-name">
+Yunush Science Corner
+</div>
+
+<p>
+শিখি ✓ জানি ✓ এগিয়ে যাই
+</p>
+
+</div>
+
+
+
+<!-- MARKS -->
+
+<div>
+
+<table>
+
+<tr>
+<td>👤 নাম</td>
+<td id="rName">rayhan</td>
+</tr>
+
+<tr>
+<td>💼 রেজাল্ট কোড</td>
+<td>1007</td>
+</tr>
+
+<tr>
+<td>📖 বাংলা</td>
+<td>85</td>
+</tr>
+
+<tr>
+<td>📖 ইংরেজি</td>
+<td>80</td>
+</tr>
+
+<tr>
+<td>🧮 গণিত</td>
+<td>90</td>
+</tr>
+
+<tr>
+<td>⚗️ বিজ্ঞান</td>
+<td>88</td>
+</tr>
+
+<tr>
+<td>🎯 মোট নম্বর</td>
+<td>343 / 400</td>
+</tr>
+
+<tr>
+<td>⭐ গ্রেড</td>
+<td>A+</td>
+</tr>
+
+</table>
+
+
+<div class="congrats">
+
+<strong>
+🏆 অভিনন্দন! তুমি খুব ভালো করেছো!
+</strong>
+
+পড়াশোনায় আরও এগিয়ে যাও, তোমার ভবিষ্যৎ উজ্জ্বল হোক!
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+<h3>
+“বিজ্ঞান নিয়ে ভাবো, স্বপ্ন দেখো, সফল হও”
+</h3>
+
+<p>
+— Younush Science Corner —
+</p>
+
+<div class="social">
+
+<span>f</span>
+<span>▶</span>
+<span>➤</span>
+
+</div>
+
+<p>
+© 2025 Younush Science Corner. All rights reserved.
+</p>
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
-
-/* =========================
-   ১৬ জন শিক্ষার্থীর ডেমো রেজাল্ট
-   ========================= */
-
-const students = {
-
-  "5832": {
-    name: "ehsa",
-    bangla: 82,
-    english: 78,
-    math: 90,
-    science: 85
-  },
-
-  "9147": {
-    name: "mira",
-    bangla: 88,
-    english: 84,
-    math: 91,
-    science: 87
-  },
-
-  "3265": {
-    name: "alamin",
-    bangla: 75,
-    english: 80,
-    math: 85,
-    science: 78
-  },
-
-  "7481": {
-    name: "muktadir",
-    bangla: 90,
-    english: 86,
-    math: 88,
-    science: 92
-  },
-
-  "2059": {
-    name: "bably",
-    bangla: 79,
-    english: 82,
-    math: 76,
-    science: 84
-  },
-
-  "8614": {
-    name: "moksedul",
-    bangla: 85,
-    english: 80,
-    math: 89,
-    science: 86
-  },
-
-  "4378": {
-    name: "rayhan",
-    bangla: 92,
-    english: 88,
-    math: 95,
-    science: 90
-  },
-
-  "6903": {
-    name: "tisa",
-    bangla: 87,
-    english: 90,
-    math: 84,
-    science: 89
-  },
-
-  "1526": {
-    name: "saalma",
-    bangla: 80,
-    english: 85,
-    math: 78,
-    science: 82
-  },
-
-  "8054": {
-    name: "pritha",
-    bangla: 91,
-    english: 87,
-    math: 93,
-    science: 90
-  },
-
-  "3749": {
-    name: "kabbo",
-    bangla: 76,
-    english: 79,
-    math: 84,
-    science: 81
-  },
-
-  "9261": {
-    name: "rafi",
-    bangla: 88,
-    english: 83,
-    math: 90,
-    science: 86
-  },
-
-  "5187": {
-    name: "Sabir",
-    bangla: 81,
-    english: 77,
-    math: 85,
-    science: 80
-  },
-
-  "2634": {
-    name: "Jesika",
-    bangla: 89,
-    english: 92,
-    math: 87,
-    science: 91
-  },
-
-  "7315": {
-    name: "kabbo",
-    bangla: 84,
-    english: 81,
-    math: 88,
-    science: 85
-  },
-
-  "6492": {
-    name: "kaaabbo",
-    bangla: 78,
-    english: 75,
-    math: 82,
-    science: 80
-  }
-
-};
-
-
-/* =========================
-   রেজাল্ট দেখানোর ফাংশন
-   ========================= */
 
 function showResult(){
 
-  const name =
-    document.getElementById("name").value.trim();
+    let name =
+    document.getElementById("studentName").value.trim();
 
-  const code =
-    document.getElementById("code").value.trim();
+    let code =
+    document.getElementById("resultCode").value.trim();
 
-  const error =
-    document.getElementById("error");
 
-  const result =
-    document.getElementById("result");
+    /*
+       DEMO LOGIN
 
-  result.style.display = "none";
-  error.style.display = "none";
+       Name: rayhan
+       Code: 1007
+    */
 
-  const student = students[code];
+    if(
+        name.toLowerCase() === "rayhan"
+        &&
+        code === "1007"
+    ){
 
-  if(!student || student.name.toLowerCase() !== name.toLowerCase()){
+        document.getElementById("rName").innerText = name;
 
-    error.style.display = "block";
+        document.getElementById("resultCard").style.display = "block";
 
-    return;
-  }
+        document.getElementById("resultCard")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
 
-  /* মোট নম্বর */
+    }
 
-  const total =
-    student.bangla +
-    student.english +
-    student.math +
-    student.science;
+    else{
 
-  /* গ্রেড */
+        alert(
+            "❌ নাম অথবা রেজাল্ট কোড সঠিক নয়!\n\nDemo:\nনাম: rayhan\nকোড: 1007"
+        );
 
-  const average = total / 4;
+    }
 
-  let grade;
-
-  if(average >= 80){
-    grade = "A+";
-  }
-  else if(average >= 70){
-    grade = "A";
-  }
-  else if(average >= 60){
-    grade = "B";
-  }
-  else if(average >= 50){
-    grade = "C";
-  }
-  else if(average >= 40){
-    grade = "D";
-  }
-  else{
-    grade = "F";
-  }
-
-  /* রেজাল্ট বসানো */
-
-  document.getElementById("rName").textContent =
-    student.name;
-
-  document.getElementById("rCode").textContent =
-    code;
-
-  document.getElementById("bangla").textContent =
-    student.bangla;
-
-  document.getElementById("english").textContent =
-    student.english;
-
-  document.getElementById("math").textContent =
-    student.math;
-
-  document.getElementById("science").textContent =
-    student.science;
-
-  document.getElementById("total").textContent =
-    total + " / 400";
-
-  document.getElementById("grade").textContent =
-    grade;
-
-  result.style.display = "block";
 }
 
 </script>
 
+
 </body>
-</html>          
+  </html>
