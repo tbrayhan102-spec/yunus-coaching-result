@@ -3,190 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Yunus Coaching - Result Portal</title>
-
+<title>Yunush Science Corner - Result Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bangla:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  background:#f3f6fb;
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  color:#18243a;
-}
-
-.container{
-  max-width:520px;
-  margin:30px auto;
-  padding:15px;
-}
-
-.card{
-  background:white;
-  border-radius:25px;
-  padding:35px 30px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-h1{
-  text-align:center;
-  margin:0;
-  font-size:38px;
-}
-
-.subtitle{
-  text-align:center;
-  color:#667085;
-  font-size:22px;
-  margin:8px 0 45px;
-}
-
-label{
-  display:block;
-  font-size:25px;
-  font-weight:bold;
-  margin:22px 0 10px;
-}
-
-input{
-  width:100%;
-  padding:18px;
-  border:1px solid #d0d5dd;
-  border-radius:18px;
-  font-size:22px;
-  outline:none;
-}
-
-input:focus{
-  border-color:#2563eb;
-}
-
-button{
-  width:100%;
-  margin-top:30px;
-  padding:19px;
-  border:0;
-  border-radius:18px;
-  background:#2563eb;
-  color:white;
-  font-size:25px;
-  font-weight:bold;
-}
-
-button:active{
-  transform:scale(.98);
-}
-
-#error{
-  display:none;
-  text-align:center;
-  color:#d92d20;
-  margin-top:20px;
-  font-size:18px;
-  font-weight:bold;
-}
-
-#result{
-  display:none;
-  margin-top:25px;
-  padding:25px;
-  border-radius:18px;
-  background:#f0fdf4;
-  border:1px solid #86efac;
-}
-
-#result h2{
-  text-align:center;
-  margin-top:0;
-}
-
-.result-row{
-  padding:10px 0;
-  border-bottom:1px solid #d1fae5;
-  font-size:19px;
-}
-
-.result-row:last-child{
-  border-bottom:0;
-}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#eef6ff 0%, #f7fbff 50%);font-family:'Noto Sans Bangla', 'Noto Sans Bengali', Arial, sans-serif;color:#0f1724}
+.container{max-width:920px;margin:30px auto;padding:18px}
+.header-hero{background:linear-gradient(90deg,#0ea5e9,#6366f1);color:#fff;border-radius:18px;padding:22px 20px;display:flex;gap:18px;align-items:center}
+.hero-left{flex:1}
+.logo-title{display:flex;align-items:center;gap:14px}
+.logo-title h1{margin:0;font-size:30px;letter-spacing:1px}
+.hero-sub{margin-top:6px;font-size:14px;opacity:0.95}
+.hero-right{width:160px;text-align:center}
+.hero-right img{width:120px;height:120px;border-radius:12px;border:4px solid rgba(255,255,255,.18)}
+.card{background:#fff;border-radius:18px;padding:20px;margin-top:18px;box-shadow:0 12px 30px rgba(2,6,23,.06)}
+.row{display:flex;gap:18px;flex-wrap:wrap}
+.input-card{flex:1;min-width:220px;background:#f8fafc;border-radius:12px;padding:18px;border:1px solid #e6eefb}
+.input-field{display:flex;flex-direction:column;gap:8px}
+.input-field label{font-weight:700;color:#0b1220}
+.input-field input{padding:12px 14px;border-radius:10px;border:1px solid #dbeafe;font-size:16px;background:#fff}
+.btn-primary{display:inline-block;background:#175bd3;color:#fff;padding:14px 18px;border-radius:12px;border:0;font-weight:800;font-size:16px;width:100%;cursor:pointer}
+.result-panel{margin-top:18px;background:linear-gradient(180deg,#f0fdf4,#f7fff9);border-radius:14px;padding:18px;border:1px solid #c7f3d8}
+.result-header{display:flex;align-items:center;gap:14px}
+.avatar{width:110px;height:110px;border-radius:999px;overflow:hidden;border:6px solid #86efac;flex-shrink:0}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.result-table{flex:1}
+.table{width:100%;border-collapse:collapse}
+.table td{padding:10px 12px;border-bottom:1px solid rgba(13,77,38,.04);vertical-align:middle}
+.table td.title{font-weight:700;color:#0f1724;width:42%}
+.score{font-weight:700;color:#0b1220;text-align:right}
+.total{font-size:18px;font-weight:900;color:#064e3b}
+.grade{background:#ecfdf5;color:#065f46;padding:6px 10px;border-radius:10px;display:inline-block;font-weight:800}
+.congrats{margin-top:12px;background:#f0fdf4;border-radius:10px;padding:12px;border:1px solid #a7f3d0;color:#065f46}
+.small-muted{color:#64748b;font-size:13px}
+@media(max-width:720px){.header-hero{flex-direction:column;align-items:flex-start}.hero-right{width:100%}.row{flex-direction:column}.avatar{width:92px;height:92px}}
 </style>
 </head>
-
 <body>
-
 <div class="container">
+  <div class="header-hero">
+    <div class="hero-left">
+      <div class="logo-title">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="white"/><path d="M6 8h12M6 12h12M6 16h8" stroke="#0ea5e9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <h1>Younush Science Corner</h1>
+          <div class="hero-sub">জ্ঞানেই শক্তি, বিজ্ঞানে ভবিষ্যৎ — Physics / Chemistry / Biology / Math</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="https://raw.githubusercontent.com/tbrayhan102-spec/yunus-coaching-result/main/avatar-placeholder.png" alt="avatar">
+    </div>
+  </div>
 
   <div class="card">
+    <h2 style="margin:0 0 10px;font-size:22px">Result Portal</h2>
+    <div class="small-muted">আপনার রেজাল্ট দেখতে নিচে নাম ও রেজাল্ট কোড দিন</div>
 
-    <h1>Yunus Coaching</h1>
+    <div class="row" style="margin-top:14px">
+      <div class="input-card">
+        <div class="input-field">
+          <label>শিক্ষার্থীর নাম</label>
+          <input id="name" type="text" placeholder="নাম লিখুন">
+        </div>
+      </div>
 
-    <div class="subtitle">
-      Result Portal
+      <div class="input-card">
+        <div class="input-field">
+          <label>রেজাল্ট কোড</label>
+          <input id="code" type="text" placeholder="কোড লিখুন">
+        </div>
+      </div>
+
+      <div style="flex-basis:100%"></div>
+
+      <div style="width:100%">
+        <button class="btn-primary" onclick="showResult()">🔎 রেজাল্ট দেখুন</button>
+      </div>
     </div>
 
-    <label>শিক্ষার্থীর নাম</label>
+    <div id="error" style="display:none;margin-top:12px;color:#b91c1c;font-weight:700">নাম অথবা রেজাল্ট কোড সঠিক নয়।</div>
 
-    <input
-      type="text"
-      id="name"
-      placeholder="নাম লিখুন"
-    >
-
-    <label>রেজাল্ট কোড</label>
-
-    <input
-      type="text"
-      id="code"
-      placeholder="কোড লিখুন"
-    >
-
-    <button onclick="showResult()">
-      রেজাল্ট দেখুন
-    </button>
-
-    <div id="error">
-      নাম অথবা রেজাল্ট কোড সঠিক নয়।
-    </div>
-
-    <div id="result">
-
-      <h2>🎓 রেজাল্ট</h2>
-
-      <div class="result-row">
-        <b>নাম:</b> <span id="rName"></span>
+    <div id="result" class="result-panel" style="display:none">
+      <div class="result-header">
+        <div class="avatar"><img id="profilePic" src="https://raw.githubusercontent.com/tbrayhan102-spec/yunus-coaching-result/main/avatar-placeholder.png" alt="avatar"></div>
+        <div class="result-table">
+          <table class="table">
+            <tr><td class="title">নাম:</td><td class="score" id="rName">-</td></tr>
+            <tr><td class="title">রেজাল্ট কোড:</td><td class="score" id="rCode">-</td></tr>
+            <tr><td class="title">বাংলা:</td><td class="score" id="bangla">-</td></tr>
+            <tr><td class="title">ইংরেজি:</td><td class="score" id="english">-</td></tr>
+            <tr><td class="title">গণিত:</td><td class="score" id="math">-</td></tr>
+            <tr><td class="title">বিজ্ঞান:</td><td class="score" id="science">-</td></tr>
+            <tr><td class="title">মোট নম্বর:</td><td class="score total" id="total">-</td></tr>
+            <tr><td class="title">গ্রেড:</td><td class="score"><span id="grade" class="grade">-</span></td></tr>
+          </table>
+        </div>
       </div>
-
-      <div class="result-row">
-        <b>রেজাল্ট কোড:</b> <span id="rCode"></span>
-      </div>
-
-      <div class="result-row">
-        <b>বাংলা:</b> <span id="bangla"></span>
-      </div>
-
-      <div class="result-row">
-        <b>ইংরেজি:</b> <span id="english"></span>
-      </div>
-
-      <div class="result-row">
-        <b>গণিত:</b> <span id="math"></span>
-      </div>
-
-      <div class="result-row">
-        <b>বিজ্ঞান:</b> <span id="science"></span>
-      </div>
-
-      <div class="result-row">
-        <b>মোট নম্বর:</b> <span id="total"></span>
-      </div>
-
-      <div class="result-row">
-        <b>গ্রেড:</b> <span id="grade"></span>
-      </div>
-
+      <div id="congratsBox" class="congrats" style="display:none">🏆 অভিনন্দন! তুমি খুব ভালো করলে — পরবর্তী ধাপে আরও উন্নতি করো।</div>
     </div>
 
   </div>
@@ -194,237 +108,61 @@ button:active{
 </div>
 
 <script>
-
-/* =========================
-   ১৬ জন শিক্ষার্থীর ডেমো রেজাল্ট
-   ========================= */
-
 const students = {
-
-  "5832": {
-    name: "ehsa",
-    bangla: 82,
-    english: 78,
-    math: 90,
-    science: 85
-  },
-
-  "9147": {
-    name: "mira",
-    bangla: 88,
-    english: 84,
-    math: 91,
-    science: 87
-  },
-
-  "3265": {
-    name: "alamin",
-    bangla: 75,
-    english: 80,
-    math: 85,
-    science: 78
-  },
-
-  "7481": {
-    name: "muktadir",
-    bangla: 90,
-    english: 86,
-    math: 88,
-    science: 92
-  },
-
-  "2059": {
-    name: "bably",
-    bangla: 79,
-    english: 82,
-    math: 76,
-    science: 84
-  },
-
-  "8614": {
-    name: "moksedul",
-    bangla: 85,
-    english: 80,
-    math: 89,
-    science: 86
-  },
-
-  "4378": {
-    name: "rayhan",
-    bangla: 92,
-    english: 88,
-    math: 95,
-    science: 90
-  },
-
-  "6903": {
-    name: "tisa",
-    bangla: 87,
-    english: 90,
-    math: 84,
-    science: 89
-  },
-
-  "1526": {
-    name: "saalma",
-    bangla: 80,
-    english: 85,
-    math: 78,
-    science: 82
-  },
-
-  "8054": {
-    name: "pritha",
-    bangla: 91,
-    english: 87,
-    math: 93,
-    science: 90
-  },
-
-  "3749": {
-    name: "kabbo",
-    bangla: 76,
-    english: 79,
-    math: 84,
-    science: 81
-  },
-
-  "9261": {
-    name: "rafi",
-    bangla: 88,
-    english: 83,
-    math: 90,
-    science: 86
-  },
-
-  "5187": {
-    name: "Sabir",
-    bangla: 81,
-    english: 77,
-    math: 85,
-    science: 80
-  },
-
-  "2634": {
-    name: "Jesika",
-    bangla: 89,
-    english: 92,
-    math: 87,
-    science: 91
-  },
-
-  "7315": {
-    name: "kabbo",
-    bangla: 84,
-    english: 81,
-    math: 88,
-    science: 85
-  },
-
-  "6492": {
-    name: "kaaabbo",
-    bangla: 78,
-    english: 75,
-    math: 82,
-    science: 80
-  }
-
+  "5832": { name: "ehsa", bangla:82, english:78, math:90, science:85 },
+  "9147": { name: "mira", bangla:88, english:84, math:91, science:87 },
+  "3265": { name: "alamin", bangla:75, english:80, math:85, science:78 },
+  "7481": { name: "muktadir", bangla:90, english:86, math:88, science:92 },
+  "2059": { name: "bably", bangla:79, english:82, math:76, science:84 },
+  "8614": { name: "moksedul", bangla:85, english:80, math:89, science:86 },
+  "4378": { name: "rayhan", bangla:92, english:88, math:95, science:90 },
+  "6903": { name: "tisa", bangla:87, english:90, math:84, science:89 },
+  "1526": { name: "saalma", bangla:80, english:85, math:78, science:82 },
+  "8054": { name: "pritha", bangla:91, english:87, math:93, science:90 },
+  "3749": { name: "kabbo", bangla:76, english:79, math:84, science:81 },
+  "9261": { name: "rafi", bangla:88, english:83, math:90, science:86 },
+  "5187": { name: "Sabir", bangla:81, english:77, math:85, science:80 },
+  "2634": { name: "Jesika", bangla:89, english:92, math:87, science:91 },
+  "7315": { name: "kabbo", bangla:84, english:81, math:88, science:85 },
+  "6492": { name: "kaaabbo", bangla:78, english:75, math:82, science:80 }
 };
 
-
-/* =========================
-   রেজাল্ট দেখানোর ফাংশন
-   ========================= */
-
 function showResult(){
-
-  const name =
-    document.getElementById("name").value.trim();
-
-  const code =
-    document.getElementById("code").value.trim();
-
-  const error =
-    document.getElementById("error");
-
-  const result =
-    document.getElementById("result");
-
-  result.style.display = "none";
-  error.style.display = "none";
+  const name = document.getElementById('name').value.trim();
+  const code = document.getElementById('code').value.trim();
+  const error = document.getElementById('error');
+  const result = document.getElementById('result');
+  const congrats = document.getElementById('congratsBox');
+  result.style.display = 'none'; error.style.display = 'none'; congrats.style.display = 'none';
 
   const student = students[code];
-
   if(!student || student.name.toLowerCase() !== name.toLowerCase()){
-
-    error.style.display = "block";
-
+    error.style.display = 'block';
     return;
   }
 
-  /* মোট নম্বর */
-
-  const total =
-    student.bangla +
-    student.english +
-    student.math +
-    student.science;
-
-  /* গ্রেড */
-
+  const total = student.bangla + student.english + student.math + student.science;
   const average = total / 4;
-
   let grade;
+  if(average >= 80) grade = 'A+';
+  else if(average >= 70) grade = 'A';
+  else if(average >= 60) grade = 'B';
+  else if(average >= 50) grade = 'C';
+  else if(average >= 40) grade = 'D';
+  else grade = 'F';
 
-  if(average >= 80){
-    grade = "A+";
-  }
-  else if(average >= 70){
-    grade = "A";
-  }
-  else if(average >= 60){
-    grade = "B";
-  }
-  else if(average >= 50){
-    grade = "C";
-  }
-  else if(average >= 40){
-    grade = "D";
-  }
-  else{
-    grade = "F";
-  }
+  document.getElementById('rName').textContent = student.name;
+  document.getElementById('rCode').textContent = code;
+  document.getElementById('bangla').textContent = student.bangla;
+  document.getElementById('english').textContent = student.english;
+  document.getElementById('math').textContent = student.math;
+  document.getElementById('science').textContent = student.science;
+  document.getElementById('total').textContent = total + ' / 400';
+  document.getElementById('grade').textContent = grade;
 
-  /* রেজাল্ট বসানো */
-
-  document.getElementById("rName").textContent =
-    student.name;
-
-  document.getElementById("rCode").textContent =
-    code;
-
-  document.getElementById("bangla").textContent =
-    student.bangla;
-
-  document.getElementById("english").textContent =
-    student.english;
-
-  document.getElementById("math").textContent =
-    student.math;
-
-  document.getElementById("science").textContent =
-    student.science;
-
-  document.getElementById("total").textContent =
-    total + " / 400";
-
-  document.getElementById("grade").textContent =
-    grade;
-
-  result.style.display = "block";
+  if(average >= 70) congrats.style.display = 'block';
+  result.style.display = 'block';
 }
-
 </script>
-
 </body>
-                            </html>
+</html>
