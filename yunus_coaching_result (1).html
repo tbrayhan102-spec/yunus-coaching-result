@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<div class="info"><!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -59,8 +59,6 @@ th{background:#f8fafc}
     <thead><tr><th>বিষয়</th><th>প্রাপ্ত</th><th>পূর্ণ</th></tr></thead>
     <tbody id="marks"></tbody>
   </table>
-
-  <div class="info">
     <p class="total">মোট: <span id="total"></span></p>
     <p><b>ফলাফল:</b> <span id="status"></span></p>
   </div>
@@ -110,54 +108,3 @@ function showResult(){
   const found = students.find(s => s.name === name && s.code === code);
 
   if(!found){
-    document.getElementById("error").textContent =
-      "নাম অথবা কোড সঠিক নয়।";
-    return;
-  }
-
-  currentStudent = found;
-  document.getElementById("error").textContent = "";
-  document.getElementById("rName").textContent = found.name;
-  document.getElementById("rCode").textContent = found.code;
-
-  const select = document.getElementById("exam");
-  select.innerHTML = "";
-  Object.keys(found.exams).forEach(exam=>{
-    const opt=document.createElement("option");
-    opt.value=exam; opt.textContent=exam;
-    select.appendChild(opt);
-  });
-
-  document.getElementById("login").style.display="none";
-  document.getElementById("result").style.display="block";
-  renderExam();
-}
-
-function renderExam(){
-  const exam = document.getElementById("exam").value;
-  const data = currentStudent.exams[exam];
-  const tbody = document.getElementById("marks");
-  tbody.innerHTML="";
-  let total=0, full=0;
-
-  Object.entries(data).forEach(([subject, marks])=>{
-    total += marks[0]; full += marks[1];
-    const tr=document.createElement("tr");
-    tr.innerHTML=`<td>${subject}</td><td>${marks[0]}</td><td>${marks[1]}</td>`;
-    tbody.appendChild(tr);
-  });
-
-  document.getElementById("total").textContent = `${total} / ${full}`;
-  document.getElementById("status").textContent =
-    total >= full*0.33 ? "উত্তীর্ণ" : "অনুত্তীর্ণ";
-}
-
-function goBack(){
-  document.getElementById("result").style.display="none";
-  document.getElementById("login").style.display="block";
-  document.getElementById("name").value="";
-  document.getElementById("code").value="";
-}
-</script>
-</body>
-</html>
