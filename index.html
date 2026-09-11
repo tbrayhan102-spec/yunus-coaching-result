@@ -4,607 +4,289 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Younush Science Corner - Result Portal</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Yunush Science Corner - Result Portal</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-    font-family:'Noto Sans Bengali',sans-serif;
-    background:#f2f8ff;
-    color:#123c6b;
+  margin:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#eef6ff;
+  color:#123b67;
 }
 
-/* ================= HEADER ================= */
-
-.hero{
-    min-height:390px;
-    padding:25px 5%;
-    position:relative;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at 20% 20%,#1468c5,transparent 35%),
-    radial-gradient(circle at 80% 30%,#003b88,transparent 40%),
-    linear-gradient(135deg,#001b4d,#0054a6,#001a45);
-
-    color:white;
+/* ব্যানার */
+.hero img{
+  width:100%;
+  display:block;
 }
 
-.hero:before{
-    content:"";
-    position:absolute;
-    width:600px;
-    height:600px;
-    border:2px solid rgba(255,255,255,.08);
-    border-radius:50%;
-    left:-250px;
-    top:-300px;
+/* মেনু */
+.nav{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  background:#07376f;
+  padding:10px;
 }
 
-.hero-content{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:35px;
-    position:relative;
-    z-index:2;
+.nav button{
+  border:0;
+  border-radius:12px;
+  padding:13px 18px;
+  background:#0877ee;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
 }
 
-/* PROFILE */
-
-.profile{
-    width:230px;
-    align-self:flex-end;
-    text-align:center;
-}
-
-.profile img{
-    width:220px;
-    height:350px;
-    object-fit:cover;
-    object-position:top;
-    border-radius:20px 20px 0 0;
-    filter:drop-shadow(0 10px 15px rgba(0,0,0,.4));
-}
-
-/* TITLE */
-
-.logo{
-    text-align:center;
-    flex:1;
-}
-
-.logo h1{
-    font-family:Arial,sans-serif;
-    font-size:65px;
-    font-weight:900;
-    line-height:.95;
-    color:#ff2438;
-    text-shadow:
-        4px 4px 0 white,
-        7px 7px 0 #061b3d;
-}
-
-.logo h2{
-    margin-top:5px;
-    font-family:Arial,sans-serif;
-    font-size:72px;
-    font-weight:900;
-    letter-spacing:-4px;
-
-    background:linear-gradient(
-        90deg,
-        #5bdc4c,
-        #ffd72e,
-        #ff4d96,
-        #9c5cff,
-        #35a9ff
-    );
-
-    -webkit-background-clip:text;
-    color:transparent;
-
-    -webkit-text-stroke:3px white;
-
-    text-shadow:6px 7px 0 #061b3d;
-}
-
-.corner{
-    display:inline-block;
-    background:#f21e32;
-    color:white;
-    padding:5px 25px;
-    font-size:45px;
-    font-family:Arial,sans-serif;
-    font-weight:900;
-    border:5px solid white;
-    border-radius:8px;
-    box-shadow:5px 6px 0 #061b3d;
-}
-
-.tagline{
-    margin-top:15px;
-    font-size:25px;
-    font-weight:700;
-}
-
-.subjects{
-    margin:18px auto 0;
-    background:#ed2539;
-    border-radius:25px;
-    padding:8px 20px;
-    font-weight:700;
-    font-size:17px;
-    max-width:650px;
-}
-
-/* ADMISSION */
-
-.admission{
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-
-    background:linear-gradient(135deg,#ffdf00,#ff2e63,#743cff);
-    border:8px solid white;
-
-    box-shadow:0 0 0 6px #075bb5,
-               0 10px 25px rgba(0,0,0,.4);
-
-    color:white;
-    font-size:25px;
-    font-weight:900;
-}
-
-/* ================= NAVBAR ================= */
-
-nav{
-    background:#002d62;
-    padding:10px;
-}
-
-.nav-inner{
-    max-width:1000px;
-    margin:auto;
-    display:flex;
-    justify-content:space-around;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    padding:13px 25px;
-    border-radius:12px;
-    font-size:17px;
-}
-
-nav a:hover,
-nav a.active{
-    background:#0879ff;
-}
-
-/* ================= MAIN ================= */
-
-main{
-    max-width:1000px;
-    margin:auto;
-    padding:45px 20px;
+/* মূল অংশ */
+.wrap{
+  max-width:1000px;
+  margin:auto;
+  padding:20px 14px;
 }
 
 .title{
-    text-align:center;
-    margin-bottom:35px;
+  text-align:center;
+  color:#1459a0;
+  font-size:32px;
 }
 
-.title h2{
-    font-size:42px;
-    color:#0755a0;
+.sub{
+  text-align:center;
+  font-size:18px;
 }
 
-.title p{
-    font-size:18px;
-    margin-top:8px;
+/* কার্ড */
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin:18px 0;
+  box-shadow:0 8px 30px #9ab4d455;
 }
 
-/* SEARCH BOX */
-
-.search-box{
-    background:white;
-    border-radius:18px;
-    padding:28px;
-    box-shadow:0 10px 35px rgba(0,80,160,.12);
-    margin-bottom:25px;
+/* ইনপুট */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.inputs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+label{
+  font-weight:bold;
+  display:block;
+  margin:5px 0;
 }
 
-.input-group{
-    position:relative;
+select,
+input{
+  width:100%;
+  padding:14px;
+  border:2px solid #d8e7f7;
+  border-radius:12px;
+  font-size:16px;
 }
 
-.input-group input{
-    width:100%;
-    padding:17px 20px;
-    border:2px solid #d9e8f7;
-    border-radius:13px;
-    outline:none;
-    font-size:17px;
-    font-family:inherit;
+/* বাটন */
+.search{
+  width:100%;
+  margin-top:15px;
+  padding:15px;
+  border:0;
+  border-radius:13px;
+  background:#0877ee;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
 }
 
-.input-group input:focus{
-    border-color:#0879ff;
-}
-
-.search-btn{
-    margin-top:20px;
-    width:100%;
-    border:0;
-    padding:17px;
-    border-radius:15px;
-    background:linear-gradient(90deg,#0669f5,#087bff);
-    color:white;
-    font-family:inherit;
-    font-size:20px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-.search-btn:hover{
-    opacity:.9;
-}
-
-/* ================= RESULT ================= */
-
+/* রেজাল্ট */
 .result{
-    display:none;
-    background:white;
-    border:2px solid #52ddb0;
-    border-radius:20px;
-    padding:25px;
-    box-shadow:0 10px 35px rgba(0,120,80,.1);
+  display:none;
+  background:#f7fffb;
+  border:2px solid #a9ead0;
 }
 
-.result-header{
-    background:#e5fff4;
-    border-radius:15px;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+.resultGrid{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:20px;
 }
 
-.result-header h3{
-    color:#00875a;
-    font-size:28px;
+.profile{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:50%;
+  border:5px solid #18a67a;
 }
 
-.success{
-    background:#12b779;
-    color:white;
-    padding:7px 15px;
-    border-radius:20px;
-    font-size:14px;
-}
-
-/* RESULT CONTENT */
-
-.result-content{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    gap:30px;
-    align-items:start;
-}
-
-.student{
-    text-align:center;
-}
-
-.student img{
-    width:190px;
-    height:190px;
-    object-fit:cover;
-    object-position:top;
-    border-radius:50%;
-    border:7px solid white;
-    outline:4px solid #13bfa1;
-}
-
-.student-name{
-    margin-top:15px;
-    font-family:cursive;
-    font-size:25px;
-    color:#073b70;
-}
-
-.student p{
-    margin-top:8px;
-    color:#168b66;
-}
-
-/* TABLE */
-
+/* টেবিল */
 table{
-    width:100%;
-    border-collapse:collapse;
-    overflow:hidden;
-    border-radius:12px;
+  width:100%;
+  border-collapse:collapse;
+  background:white;
 }
 
 td{
-    border:1px solid #d8e7f2;
-    padding:10px 15px;
-    font-size:17px;
+  padding:11px;
+  border-bottom:1px solid #dce8f2;
+  font-size:16px;
 }
 
 td:first-child{
-    width:45%;
-    font-weight:600;
-    background:#f2f9ff;
+  font-weight:bold;
+  width:55%;
 }
 
-td:last-child{
-    font-weight:700;
-    color:#163e69;
+.ok{
+  background:#18a974;
+  color:white;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:14px;
 }
 
-/* CONGRATS */
-
-.congrats{
-    margin-top:18px;
-    background:#e2fff3;
-    border:1px solid #9debd0;
-    border-radius:12px;
-    padding:15px;
-    color:#087b58;
-}
-
-.congrats strong{
-    display:block;
-    font-size:18px;
-}
-
-/* ================= FOOTER ================= */
-
+/* Footer */
 footer{
-    background:#002b5c;
-    color:white;
-    text-align:center;
-    padding:35px 15px;
-    margin-top:30px;
+  background:#062d5b;
+  color:white;
+  text-align:center;
+  padding:22px;
 }
 
-footer h3{
-    font-size:22px;
+/* মোবাইল */
+@media(max-width:650px){
+
+  .grid,
+  .resultGrid{
+    grid-template-columns:1fr;
+  }
+
+  .profile{
+    width:130px;
+    height:130px;
+  }
+
+  .title{
+    font-size:26px;
+  }
+
 }
-
-.social{
-    margin:15px 0;
-}
-
-.social span{
-    display:inline-block;
-    margin:5px;
-    width:40px;
-    height:40px;
-    line-height:40px;
-    border-radius:50%;
-    background:#0879ff;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:850px){
-
-    .hero{
-        padding:20px 10px 0;
-    }
-
-    .hero-content{
-        flex-direction:column;
-        gap:5px;
-    }
-
-    .profile{
-        order:2;
-        width:180px;
-    }
-
-    .profile img{
-        width:180px;
-        height:270px;
-    }
-
-    .logo{
-        order:1;
-    }
-
-    .admission{
-        display:none;
-    }
-
-    .logo h1{
-        font-size:43px;
-    }
-
-    .logo h2{
-        font-size:48px;
-    }
-
-    .corner{
-        font-size:30px;
-    }
-
-    .tagline{
-        font-size:18px;
-    }
-
-    .subjects{
-        font-size:12px;
-    }
-
-    .nav-inner{
-        overflow-x:auto;
-        justify-content:flex-start;
-        gap:5px;
-    }
-
-    nav a{
-        white-space:nowrap;
-        font-size:14px;
-        padding:10px 14px;
-    }
-
-    .title h2{
-        font-size:30px;
-    }
-
-    .inputs{
-        grid-template-columns:1fr;
-    }
-
-    .result-content{
-        grid-template-columns:1fr;
-    }
-
-    .student{
-        margin:auto;
-    }
-
-    td{
-        font-size:14px;
-    }
-}
-
 </style>
-</head>
 
+</head>
 
 <body>
 
-
-<!-- ================= HEADER ================= -->
-
-<header class="hero">
-
-<div class="hero-content">
-
-    <div class="profile">
-        <img src="profile.jpg" alt="Student">
-    </div>
+<!-- ব্যানার -->
+<div class="hero">
+  <img src="FB_IMG_1789065299921.jpg"
+       alt="Yunush Science Corner">
+</div>
 
 
-    <div class="logo">
+<!-- মেনু -->
+<div class="nav">
 
-        <h1>YOUNUSH</h1>
+  <button>⌂ হোম</button>
 
-        <h2>SCIENCE</h2>
+  <button>▣ রেজাল্ট দেখুন</button>
 
-        <div class="corner">
-            CORNER
-        </div>
+  <button>ⓘ আমাদের সম্পর্কে</button>
 
-        <div class="tagline">
-            — জ্ঞানই শক্তি, বিজ্ঞানই ভবিষ্যৎ —
-        </div>
-
-        <div class="subjects">
-            PHYSICS / CHEMISTRY / BIOLOGY / HIGHER MATH / GENERAL MATH
-        </div>
-
-    </div>
-
-
-    <div class="admission">
-        🎓<br>
-        চলতি শিক্ষাবর্ষে<br>
-        ভর্তি চলছে
-    </div>
+  <button>✉ যোগাযোগ</button>
 
 </div>
 
-</header>
 
+<div class="wrap">
 
-<!-- ================= NAV ================= -->
+<h1 class="title">
+🎓 Result Portal
+</h1>
 
-<nav>
-
-<div class="nav-inner">
-
-<a href="#" class="active">🏠 হোম</a>
-
-<a href="#result">📋 রেজাল্ট দেখুন</a>
-
-<a href="#about">ⓘ আমাদের সম্পর্কে</a>
-
-<a href="#contact">✉ যোগাযোগ</a>
-
-</div>
-
-</nav>
-
-
-
-<!-- ================= MAIN ================= -->
-
-<main id="result">
-
-
-<div class="title">
-
-<h2>🎓 Result Portal</h2>
-
-<p>
-আপনার রেজাল্ট দেখতে নিচে নাম্বার ও রেজাল্ট কোড দিন
+<p class="sub">
+রেজাল্ট দেখতে প্রতিষ্ঠান, বিভাগ, নাম ও কোড দিন
 </p>
 
+
+<!-- লগইন -->
+<div class="card">
+
+<div class="grid">
+
+<div>
+
+<label>প্রতিষ্ঠান</label>
+
+<select id="type">
+
+<option value="">
+নির্বাচন করুন
+</option>
+
+<option value="School">
+School
+</option>
+
+</select>
+
 </div>
 
 
+<div>
 
-<!-- SEARCH -->
+<label>বিভাগ</label>
 
-<div class="search-box">
+<select id="dept">
 
-<div class="inputs">
+<option value="">
+নির্বাচন করুন
+</option>
 
-<div class="input-group">
+<option value="Science">
+Science
+</option>
+
+<option value="Arts">
+Arts
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+শিক্ষার্থীর নাম
+</label>
 
 <input
-type="text"
-id="studentName"
-placeholder="👤 শিক্ষার্থীর নাম লিখুন"
+id="name"
+placeholder="যেমন: rayhan"
 >
 
 </div>
 
 
-<div class="input-group">
+<div>
+
+<label>
+রেজাল্ট কোড
+</label>
 
 <input
-type="text"
-id="resultCode"
-placeholder="🔒 রেজাল্ট কোড লিখুন"
+id="code"
+placeholder="যেমন: 4378"
 >
 
 </div>
@@ -612,45 +294,53 @@ placeholder="🔒 রেজাল্ট কোড লিখুন"
 </div>
 
 
-<button class="search-btn" onclick="showResult()">
+<button
+class="search"
+onclick="showResult()">
 
-🔍 &nbsp; রেজাল্ট দেখুন
+🔎 রেজাল্ট দেখুন
 
 </button>
 
-</div>
 
-
-
-<!-- RESULT CARD -->
-
-<div class="result" id="resultCard">
-
-
-<div class="result-header">
-
-<h3>🎓 রেজাল্ট</h3>
-
-<div class="success">
-✓ রেজাল্ট সফলভাবে পাওয়া গেছে
-</div>
+<p id="msg"></p>
 
 </div>
 
 
+<!-- রেজাল্ট -->
+<div
+class="card result"
+id="result">
 
-<div class="result-content">
+<h2>
+
+🎓 রেজাল্ট
+
+<span class="ok">
+✓ সফল
+</span>
+
+</h2>
 
 
-<!-- STUDENT -->
+<div class="resultGrid">
 
-<div class="student">
 
-<img src="profile.jpg" alt="Student">
+<!-- ছবি -->
+<div>
 
-<div class="student-name">
+<img
+class="profile"
+src="FB_IMG_1789065372760.jpg"
+alt="Profile"
+>
+
+<p>
+<b>
 Yunush Science Corner
-</div>
+</b>
+</p>
 
 <p>
 শিখি ✓ জানি ✓ এগিয়ে যাই
@@ -659,154 +349,261 @@ Yunush Science Corner
 </div>
 
 
-
-<!-- MARKS -->
-
-<div>
-
-<table>
-
-<tr>
-<td>👤 নাম</td>
-<td id="rName">rayhan</td>
-</tr>
-
-<tr>
-<td>💼 রেজাল্ট কোড</td>
-<td>1007</td>
-</tr>
-
-<tr>
-<td>📖 বাংলা</td>
-<td>85</td>
-</tr>
-
-<tr>
-<td>📖 ইংরেজি</td>
-<td>80</td>
-</tr>
-
-<tr>
-<td>🧮 গণিত</td>
-<td>90</td>
-</tr>
-
-<tr>
-<td>⚗️ বিজ্ঞান</td>
-<td>88</td>
-</tr>
-
-<tr>
-<td>🎯 মোট নম্বর</td>
-<td>343 / 400</td>
-</tr>
-
-<tr>
-<td>⭐ গ্রেড</td>
-<td>A+</td>
-</tr>
+<!-- নম্বর -->
+<table id="marks">
 
 </table>
 
 
-<div class="congrats">
-
-<strong>
-🏆 অভিনন্দন! তুমি খুব ভালো করেছো!
-</strong>
-
-পড়াশোনায় আরও এগিয়ে যাও, তোমার ভবিষ্যৎ উজ্জ্বল হোক!
-
 </div>
 
 </div>
 
 </div>
 
-</div>
 
-</main>
+<footer>
 
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer id="contact">
-
-<h3>
-“বিজ্ঞান নিয়ে ভাবো, স্বপ্ন দেখো, সফল হও”
-</h3>
-
-<p>
-— Younush Science Corner —
-</p>
-
-<div class="social">
-
-<span>f</span>
-<span>▶</span>
-<span>➤</span>
-
-</div>
-
-<p>
-© 2025 Younush Science Corner. All rights reserved.
-</p>
+© 2026 Yunush Science Corner.
+All rights reserved.
 
 </footer>
 
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
+
+/* ১৬ জন শিক্ষার্থী */
+
+const students = [
+
+  {name:"ehsa",code:"5832"},
+
+  {name:"mira",code:"9147"},
+
+  {name:"alamin",code:"3265"},
+
+  {name:"muktadir",code:"7481"},
+
+  {name:"bably",code:"2059"},
+
+  {name:"moksedul",code:"8614"},
+
+  {name:"rayhan",code:"4378"},
+
+  {name:"tisa",code:"6903"},
+
+  {name:"saalma",code:"1526"},
+
+  {name:"pritha",code:"8054"},
+
+  {name:"kabbo",code:"3749"},
+
+  {name:"rafi",code:"9261"},
+
+  {name:"Sabir",code:"5187"},
+
+  {name:"Jesika",code:"2634"},
+
+  {name:"kabbo",code:"7315"},
+
+  {name:"kaaabbo",code:"6492"}
+
+];
+
+
+/* Science-এর বিষয় */
+
+const science = [
+
+  "বাংলা ১ম পত্র",
+
+  "বাংলা ২য় পত্র",
+
+  "English 1st Paper",
+
+  "English 2nd Paper",
+
+  "গণিত",
+
+  "ICT",
+
+  "পদার্থবিজ্ঞান",
+
+  "রসায়ন",
+
+  "জীববিজ্ঞান",
+
+  "উচ্চতর গণিত"
+
+];
+
+
+/* Arts-এর বিষয় */
+
+const arts = [
+
+  "বাংলা ১ম পত্র",
+
+  "বাংলা ২য় পত্র",
+
+  "English 1st Paper",
+
+  "English 2nd Paper",
+
+  "গণিত",
+
+  "ICT",
+
+  "ইতিহাস",
+
+  "ভূগোল",
+
+  "পৌরনীতি ও নাগরিকতা",
+
+  "অর্থনীতি"
+
+];
+
+
+/* রেজাল্ট দেখানো */
 
 function showResult(){
 
-    let name =
-    document.getElementById("studentName").value.trim();
+  const type =
+  document.getElementById("type").value;
 
-    let code =
-    document.getElementById("resultCode").value.trim();
+  const dept =
+  document.getElementById("dept").value;
+
+  const name =
+  document.getElementById("name")
+  .value
+  .trim()
+  .toLowerCase();
+
+  const code =
+  document.getElementById("code")
+  .value
+  .trim();
 
 
-    /*
-       DEMO LOGIN
+  const msg =
+  document.getElementById("msg");
 
-       Name: rayhan
-       Code: 1007
-    */
+  const result =
+  document.getElementById("result");
 
-    if(
-        name.toLowerCase() === "rayhan"
-        &&
-        code === "1007"
-    ){
 
-        document.getElementById("rName").innerText = name;
+  /* প্রতিষ্ঠান/বিভাগ নির্বাচন */
 
-        document.getElementById("resultCard").style.display = "block";
+  if(type !== "School" || !dept){
 
-        document.getElementById("resultCard")
-        .scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
+    msg.textContent =
+    "প্রথমে School ও বিভাগ নির্বাচন করুন।";
 
-    }
+    return;
 
-    else{
+  }
 
-        alert(
-            "❌ নাম অথবা রেজাল্ট কোড সঠিক নয়!\n\nDemo:\nনাম: rayhan\nকোড: 1007"
-        );
 
-    }
+  /* শিক্ষার্থী খোঁজা */
+
+  const student =
+  students.find(function(x){
+
+    return x.name.toLowerCase() === name
+    && x.code === code;
+
+  });
+
+
+  /* ভুল নাম/কোড */
+
+  if(!student){
+
+    result.style.display = "none";
+
+    msg.textContent =
+    "নাম বা কোড সঠিক নয়।";
+
+    return;
+
+  }
+
+
+  /* বিভাগ অনুযায়ী বিষয় */
+
+  const subjects =
+  dept === "Science"
+  ? science
+  : arts;
+
+
+  let html = "";
+
+
+  html += `
+  <tr>
+    <td>নাম</td>
+    <td>${student.name}</td>
+  </tr>
+  `;
+
+
+  html += `
+  <tr>
+    <td>রেজাল্ট কোড</td>
+    <td>${student.code}</td>
+  </tr>
+  `;
+
+
+  /* সব নম্বর ০০ */
+
+  subjects.forEach(function(subject){
+
+    html += `
+    <tr>
+      <td>${subject}</td>
+      <td>০০</td>
+    </tr>
+    `;
+
+  });
+
+
+  /* মোট */
+
+  html += `
+  <tr>
+    <td>মোট নম্বর</td>
+    <td>০০ / ${subjects.length * 100}</td>
+  </tr>
+  `;
+
+
+  /* গ্রেড */
+
+  html += `
+  <tr>
+    <td>গ্রেড</td>
+    <td>F</td>
+  </tr>
+  `;
+
+
+  document.getElementById("marks")
+  .innerHTML = html;
+
+
+  result.style.display = "block";
+
+  msg.textContent = "";
 
 }
 
 </script>
 
-
 </body>
-    </html>
+</html>  
